@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Aca & Adli Wedding Invitation — Two Agents. One Mission. Forever. — 25 October 2026">
+<meta name="theme-color" content="#080b0f">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Aca & Adli — Wedding Invitation">
+<meta property="og:description" content="Two Agents. One Mission. Forever. Join us on 25 October 2026">
+<meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Crect fill='%23080b0f' width='1200' height='630'/%3E%3Ctext x='600' y='300' font-size='72' fill='%23ff4655' text-anchor='middle' font-family='sans-serif' font-weight='bold'%3EACA %26 ADLI%3C/text%3E%3Ctext x='600' y='380' font-size='24' fill='%23ece8e1' text-anchor='middle' font-family='monospace'%3E25 OCTOBER 2026%3C/text%3E%3C/svg%3E">
+<title>Aca & Adli — Wedding Invitation</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Rajdhani:wght@300;400;500;600;700&family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   TOKENS
+   ========================================================= */
+:root{
+    --void:        #080b0f;
+    --void-2:      #0d1319;
+    --panel:       #10171f;
+    --panel-2:     #131c25;
+    --line:        #202b35;
+    --line-bright: #37495a;
+
+    --red:      #ff4655;
+    --red-glow: #ff2f42;
+    --red-dim:  #5e1c24;
+    --red-soft: rgba(255,70,85,.12);
+
+    --teal:     #14e6b5;
+    --teal-dim: rgba(20,230,181,.14);
+
+    --cream:      #ece8e1;
+    --text-dim:   #8b97a3;
+    --text-dimmer:#4d5865;
+
+    --f-display: 'Anton', 'Arial Narrow', sans-serif;
+    --f-ui:      'Rajdhani', 'Chakra Petch', sans-serif;
+    --f-mono:    'Chakra Petch', 'Courier New', monospace;
+
+    --ease: cubic-bezier(.4,0,.2,1);
+    --t-fast: 220ms;
+    --t-mid: 420ms;
+    --t-slow: 700ms;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; overflow-x:hidden; background:var(--void); }
+body{
+    background:var(--void);
+    color:var(--cream);
+    font-family:var(--f-ui);
+    font-weight:500;
+    font-size:16px;
+    line-height:1.65;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+}
+button{ font-family:inherit; cursor:pointer; border:none; background:none; color:inherit; }
+input,textarea,select{ font-family:inherit; color:inherit; }
+img{ max-width:100%; display:block; }
+::selection{ background:var(--red); color:var(--void); }
+
+/* thin custom scrollbar (webkit) for that HUD feel */
+::-webkit-scrollbar{ width:6px; }
+::-webkit-scrollbar-track{ background:var(--void); }
+::-webkit-scrollbar-thumb{ background:var(--line-bright); }
+
+/* =========================================================
+   SHARED PRIMITIVES
+   ========================================================= */
+.eyebrow{
+    font-family:var(--f-mono);
+    font-size:.7rem;
+    letter-spacing:.35em;
+    color:var(--red);
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:.6em;
+}
+.eyebrow::before{
+    content:'';
+    width:18px; height:1px;
+    background:var(--red);
+    display:inline-block;
+}
+.display{
+    font-family:var(--f-display);
+    text-transform:uppercase;
+    letter-spacing:.01em;
+    line-height:.92;
+}
+.mono{ font-family:var(--f-mono); }
+
+.hud-corners{ position:relative; }
+.hud-corners::before,
+.hud-corners::after{
+    content:'';
+    position:absolute;
+    width:16px; height:16px;
+    border-color:var(--red);
+    border-style:solid;
+    opacity:.85;
+    pointer-events:none;
+    transition:all var(--t-fast) var(--ease);
+}
+.hud-corners::before{ top:-1px; left:-1px; border-width:2px 0 0 2px; }
+.hud-corners::after{ bottom:-1px; right:-1px; border-width:0 2px 2px 0; }
+
+.diag-btn{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:.5em;
+    padding:.95rem 1.9rem;
+    font-family:var(--f-ui);
+    font-weight:700;
+    font-size:.82rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--cream);
+    background:transparent;
+    border:1px solid var(--line-bright);
+    clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);
+    min-height:48px;
+    transition:all var(--t-fast) var(--ease);
+    overflow:hidden;
+}
+.diag-btn::before{
+    content:'';
+    position:absolute; inset:0;
+    background:var(--red);
+    transform:translateX(-102%);
+    transition:transform var(--t-fast) var(--ease);
+    z-index:-1;
+}
+.diag-btn:hover{ border-color:var(--red); color:var(--void); }
+.diag-btn:hover::before{ transform:translateX(0); }
+.diag-btn:active{ transform:scale(.97); }
+.diag-btn.primary{ border-color:var(--red); background:var(--red-soft); color:var(--red); }
+.diag-btn.primary:hover{ color:var(--void); }
+.diag-btn.ghost{ border-color:var(--line); color:var(--text-dim); }
+.diag-btn.ghost:hover{ border-color:var(--cream); color:var(--void); }
+.diag-btn.ghost::before{ background:var(--cream); }
+.diag-btn.block{ width:100%; }
+.diag-btn:disabled{ opacity:.45; pointer-events:none; }
+
+.tag{
+    font-family:var(--f-mono);
+    font-size:.65rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    padding:.3em .7em;
+    border:1px solid var(--line-bright);
+    color:var(--text-dim);
+}
+.tag.on{ border-color:var(--teal); color:var(--teal); }
+.tag.red{ border-color:var(--red); color:var(--red); }
+
+.divider{
+    display:flex; align-items:center; gap:1rem;
+    margin:0 auto 2.5rem;
+    max-width:340px;
+}
+.divider::before,.divider::after{
+    content:''; flex:1; height:1px;
+    background:linear-gradient(90deg,transparent,var(--line-bright),transparent);
+}
+.divider span{
+    font-family:var(--f-mono); font-size:.65rem; letter-spacing:.3em;
+    color:var(--text-dimmer);
+}
+
+/* animated scan line reused across screens */
+@keyframes scanmove{ 0%{transform:translateY(-100%);} 100%{transform:translateY(100vh);} }
+.scan-global{
+    position:fixed; left:0; top:0; width:100%; height:2px;
+    background:linear-gradient(90deg,transparent,rgba(255,70,85,.55),transparent);
+    animation:scanmove 5s linear infinite;
+    pointer-events:none; z-index:5; opacity:.5;
+}
+
+/* noise overlay */
+.noise{
+    position:fixed; inset:0; pointer-events:none; z-index:4; opacity:.035; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes fadeIn{ from{opacity:0;} to{opacity:1;} }
+@keyframes riseIn{ from{opacity:0; transform:translateY(26px);} to{opacity:1; transform:translateY(0);} }
+@keyframes riseInSmall{ from{opacity:0; transform:translateY(12px);} to{opacity:1; transform:translateY(0);} }
+@keyframes scaleIn{ from{opacity:0; transform:scale(.94);} to{opacity:1; transform:scale(1);} }
+@keyframes pulseSoft{ 0%,100%{opacity:1;} 50%{opacity:.45;} }
+@keyframes lineGrow{ from{width:0;} to{width:100%;} }
+@keyframes blink{ 0%,49%{opacity:1;} 50%,100%{opacity:0;} }
+@keyframes drift{ 0%,100%{transform:translate(0,0);} 50%{transform:translate(24px,18px);} }
+@keyframes radarSweep{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+
+/* scroll reveal: elements animate in as they enter the viewport */
+.scroll-reveal{
+    opacity:0;
+    transform:translateY(34px);
+    transition:opacity 700ms cubic-bezier(.4,0,.2,1), transform 700ms cubic-bezier(.4,0,.2,1);
+    will-change:opacity, transform;
+}
+.scroll-reveal.revealed{
+    opacity:1;
+    transform:translateY(0);
+}
+.scroll-reveal.reveal-left{ transform:translateX(-34px); }
+.scroll-reveal.reveal-left.revealed{ transform:translateX(0); }
+.scroll-reveal.reveal-right{ transform:translateX(34px); }
+.scroll-reveal.reveal-right.revealed{ transform:translateX(0); }
+@media (prefers-reduced-motion:reduce){
+    .scroll-reveal,.scroll-reveal.reveal-left,.scroll-reveal.reveal-right{ opacity:1; transform:none; transition:none; }
+}
+
+@media (prefers-reduced-motion:reduce){
+    *{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+}
+
+.screen{ display:none; }
+.screen.active{ display:flex; }
+
+.container{ width:100%; max-width:1200px; margin:0 auto; padding:0 1.1rem; }
+
+/* =========================================================
+   LOADING SCREEN
+   ========================================================= */
+.loading-screen{
+    position:fixed; inset:0; background:var(--void);
+    display:flex; align-items:center; justify-content:center;
+    z-index:9999; flex-direction:column;
+}
+.loading-screen.hidden{ opacity:0; pointer-events:none; transition:opacity 550ms ease-out; }
+.loading-screen::before{
+    content:''; position:absolute; inset:0;
+    background:
+        repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0px,transparent 1px,transparent 3px),
+        radial-gradient(circle at 50% 50%, rgba(255,70,85,.08), transparent 60%);
+}
+.loading-inner{ position:relative; text-align:center; width:280px; }
+.loading-tag{
+    font-family:var(--f-mono); font-size:.68rem; letter-spacing:.35em;
+    color:var(--text-dim); margin-bottom:1.4rem; animation:pulseSoft 1.8s infinite;
+}
+.loading-title{
+    font-family:var(--f-display); font-size:2.1rem; letter-spacing:.03em;
+    color:var(--cream); margin-bottom:.4rem;
+}
+.loading-title em{ color:var(--red); font-style:normal; }
+.loading-sub{ font-family:var(--f-mono); font-size:.68rem; letter-spacing:.28em; color:var(--text-dimmer); margin-bottom:2rem; }
+.loading-track{ height:3px; width:100%; background:var(--line); position:relative; overflow:hidden; }
+.loading-track::before{
+    content:''; position:absolute; inset:0;
+    background:repeating-linear-gradient(90deg,var(--void) 0 6px, transparent 6px 8px);
+    z-index:2;
+}
+.loading-bar{ height:100%; width:0%; background:linear-gradient(90deg,var(--red-dim),var(--red)); animation:loadfill 1.6s ease-out forwards; }
+@keyframes loadfill{ to{ width:100%; } }
+.loading-pct{ font-family:var(--f-mono); font-size:.7rem; letter-spacing:.2em; color:var(--red); margin-top:1rem; }
+.loading-coords{
+    position:absolute; bottom:-3.5rem; left:0; right:0;
+    display:flex; justify-content:space-between;
+    font-family:var(--f-mono); font-size:.6rem; letter-spacing:.15em; color:var(--text-dimmer);
+}
+
+/* =========================================================
+   READY SCREEN
+   ========================================================= */
+.ready-screen{
+    min-height:100dvh; width:100%;
+    flex-direction:column; align-items:center; justify-content:center;
+    padding:2rem 1.2rem; text-align:center; position:relative; overflow:hidden;
+}
+.ready-screen::before{
+    content:''; position:absolute; inset:0; z-index:0;
+    background:
+        linear-gradient(135deg, transparent 48%, rgba(255,70,85,.06) 49%, rgba(255,70,85,.06) 51%, transparent 52%),
+        radial-gradient(circle at 20% 20%, rgba(255,70,85,.10), transparent 55%),
+        radial-gradient(circle at 85% 80%, rgba(20,230,181,.05), transparent 45%);
+}
+.ready-frame{
+    position:relative; z-index:1; width:100%; max-width:420px;
+    border:1px solid var(--line); padding:2.4rem 1.4rem;
+    background:rgba(13,19,25,.5); backdrop-filter:blur(2px);
+    animation:scaleIn var(--t-slow) var(--ease);
+}
+.ready-frame{ position:relative; }
+.ready-frame::before,.ready-frame::after{
+    content:''; position:absolute; width:22px; height:22px; border-color:var(--red); border-style:solid;
+}
+.ready-frame::before{ top:-1px; left:-1px; border-width:2px 0 0 2px; }
+.ready-frame::after{ bottom:-1px; right:-1px; border-width:0 2px 2px 0; }
+.ready-eyebrow{
+    font-family:var(--f-mono); font-size:.68rem; letter-spacing:.35em; color:var(--red);
+    margin-bottom:1.6rem; animation:fadeIn 700ms var(--ease) 100ms backwards;
+}
+.ready-eyebrow::after{ content:'_'; animation:blink 1s step-end infinite; }
+.ready-title{
+    font-family:var(--f-display); font-size:2.1rem; letter-spacing:.01em; line-height:1.05;
+    margin-bottom:.9rem; animation:riseIn 700ms var(--ease) 220ms backwards;
+}
+.ready-title em{ color:var(--red); font-style:normal; }
+.ready-mission{
+    font-family:var(--f-mono); font-size:.78rem; letter-spacing:.14em; color:var(--text-dim);
+    margin-bottom:2rem; animation:riseIn 700ms var(--ease) 360ms backwards;
+}
+.ready-vs{
+    display:flex; align-items:center; justify-content:center; gap:1rem;
+    margin:1.6rem 0 2.2rem; animation:riseIn 700ms var(--ease) 480ms backwards;
+}
+.ready-vs .name{
+    font-family:var(--f-display); font-size:1.5rem; letter-spacing:.02em; color:var(--cream);
+}
+.ready-vs .x{ color:var(--red); font-family:var(--f-mono); font-size:.9rem; }
+.ready-status-row{
+    display:flex; justify-content:center; gap:.6rem; margin-bottom:2.2rem; flex-wrap:wrap;
+    animation:riseIn 700ms var(--ease) 560ms backwards;
+}
+#readyBtn{ animation:riseIn 700ms var(--ease) 700ms backwards; }
+
+/* =========================================================
+   MAIN SCREEN / HERO
+   ========================================================= */
+.main-screen{ flex-direction:column; width:100%; }
+
+.hero{
+    min-height:100dvh; display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden; padding:6rem 1.1rem 4rem;
+    background:
+        radial-gradient(circle at 15% 15%, rgba(255,70,85,.10), transparent 45%),
+        radial-gradient(circle at 90% 85%, rgba(20,230,181,.06), transparent 40%),
+        var(--void);
+}
+.hero::before{
+    content:''; position:absolute; inset:0; z-index:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size:38px 38px;
+    mask-image:radial-gradient(circle at 50% 40%, black, transparent 75%);
+}
+.hero-radar{
+    position:absolute; top:-90px; right:-90px; width:260px; height:260px;
+    border:1px solid var(--line-bright); border-radius:50%; opacity:.25; z-index:0;
+}
+.hero-radar::before{
+    content:''; position:absolute; inset:30px; border:1px solid var(--line-bright); border-radius:50%;
+}
+.hero-radar::after{
+    content:''; position:absolute; inset:0; border-radius:50%;
+    background:conic-gradient(from 0deg, rgba(255,70,85,.5), transparent 30%);
+    animation:radarSweep 4s linear infinite;
+}
+.hero-frame-top,.hero-frame-bottom{
+    position:absolute; left:0; right:0; z-index:2;
+    display:flex; justify-content:space-between; padding:1.2rem 1.2rem;
+    font-family:var(--f-mono); font-size:.62rem; letter-spacing:.18em; color:var(--text-dimmer);
+}
+.hero-frame-top{ top:0; }
+.hero-frame-bottom{ bottom:0; }
+.hero-frame-top span:last-child,.hero-frame-bottom span:last-child{ color:var(--red); }
+
+.hero-content{ position:relative; z-index:1; text-align:center; max-width:640px; animation:riseIn var(--t-slow) var(--ease); }
+.hero-content .eyebrow{ justify-content:center; margin-bottom:1.6rem; }
+.hero-names{ font-family:var(--f-display); font-size:clamp(2.6rem,11vw,4.6rem); letter-spacing:.01em; margin-bottom:.3rem; }
+.hero-agent{ display:flex; flex-direction:column; align-items:center; line-height:1; }
+.hero-agent-fullname{
+    margin-top:.45rem; font-family:var(--f-mono); font-size:clamp(.58rem,2.5vw,.72rem);
+    font-weight:400; letter-spacing:.14em; color:var(--text-dim); line-height:1.35;
+    text-transform:uppercase; white-space:nowrap;
+}
+.hero-amp{ color:var(--red); display:block; font-size:.6em; margin:.15em 0; }
+.hero-getting{
+    font-family:var(--f-mono); font-size:.72rem; letter-spacing:.35em; color:var(--text-dim);
+    margin:1.2rem 0 2rem; text-transform:uppercase;
+}
+.hero-date-row{
+    display:flex; align-items:baseline; justify-content:center; gap:.9rem;
+    font-family:var(--f-display); margin-bottom:1.6rem; flex-wrap:wrap;
+}
+.hero-date-row .big{ font-size:3.2rem; color:var(--red); line-height:1; }
+.hero-date-row .stack{ text-align:left; font-family:var(--f-mono); font-size:.85rem; letter-spacing:.16em; color:var(--text-dim); line-height:1.5; }
+.hero-venue{
+    font-family:var(--f-ui); font-weight:600; font-size:1rem; letter-spacing:.05em; color:var(--cream);
+    margin-bottom:.2rem;
+}
+.hero-loc{ font-family:var(--f-mono); font-size:.75rem; letter-spacing:.14em; color:var(--text-dim); margin-bottom:2.2rem; }
+
+/* countdown */
+.countdown{
+    display:flex; justify-content:center; gap:.6rem; margin:0 auto 2.4rem; flex-wrap:wrap;
+}
+.count-cell{
+    width:64px; padding:.7rem .3rem; border:1px solid var(--line-bright);
+    background:rgba(255,70,85,.04); position:relative;
+    clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);
+}
+.count-num{ font-family:var(--f-display); font-size:1.5rem; color:var(--cream); line-height:1; }
+.count-lbl{ font-family:var(--f-mono); font-size:.55rem; letter-spacing:.14em; color:var(--text-dimmer); margin-top:.3rem; text-transform:uppercase; }
+
+.hero-cta{ display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap; }
+.scroll-hint{
+    position:absolute; bottom:3.6rem; left:50%; transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:.5rem; z-index:2;
+    font-family:var(--f-mono); font-size:.6rem; letter-spacing:.3em; color:var(--text-dimmer);
+    animation:pulseSoft 2s infinite;
+}
+.scroll-hint .bar{ width:1px; height:26px; background:linear-gradient(var(--red),transparent); }
+
+/* =========================================================
+   SECTION SHELL
+   ========================================================= */
+section{ position:relative; padding:5.5rem 0; }
+section.alt{ background:linear-gradient(180deg,var(--void-2),var(--void)); }
+.section-head{ text-align:center; margin-bottom:3rem; padding:0 1.1rem; }
+.section-head .eyebrow{ justify-content:center; margin-bottom:1rem; }
+.section-title{ font-family:var(--f-display); font-size:clamp(1.9rem,6vw,2.8rem); letter-spacing:.01em; margin-bottom:.7rem; }
+.section-title em{ color:var(--red); font-style:normal; }
+.section-desc{ font-family:var(--f-ui); font-weight:500; font-size:.95rem; color:var(--text-dim); max-width:460px; margin:0 auto; line-height:1.8; }
+.section-watermark{
+    position:absolute; top:-1.6rem; right:1rem; font-family:var(--f-display);
+    font-size:7rem; color:var(--cream); opacity:.025; line-height:1; z-index:0; pointer-events:none;
+    user-select:none;
+}
+@media(min-width:768px){ .section-watermark{ font-size:11rem; } }
+
+/* =========================================================
+   AGENT PROFILES (Bride & Groom)
+   ========================================================= */
+.agents{ display:grid; grid-template-columns:1fr; gap:1.6rem; max-width:900px; margin:0 auto; padding:0 1.1rem; position:relative; z-index:1; }
+@media(min-width:720px){ .agents{ grid-template-columns:1fr 1fr; } }
+.agent-card{
+    border:1px solid var(--line); background:var(--panel);
+    position:relative; overflow:hidden; animation:riseIn var(--t-slow) var(--ease) backwards;
+}
+.agent-card:nth-child(2){ animation-delay:150ms; }
+.agent-top{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:.9rem 1.1rem; border-bottom:1px solid var(--line);
+    font-family:var(--f-mono); font-size:.62rem; letter-spacing:.16em; color:var(--text-dimmer);
+}
+.agent-portrait{
+    aspect-ratio:4/3; background:linear-gradient(160deg,var(--panel-2),var(--void-2));
+    display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;
+}
+.agent-portrait img{ width:100%; height:100%; object-fit:cover; }
+.agent-portrait-ph{ font-family:var(--f-mono); font-size:.7rem; letter-spacing:.16em; color:var(--text-dimmer); text-align:center; padding:1rem; }
+.agent-portrait::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(8,11,15,.9), transparent 55%);
+}
+.agent-role{
+    position:absolute; bottom:.9rem; left:1.1rem; z-index:2;
+    font-family:var(--f-mono); font-size:.62rem; letter-spacing:.22em; color:var(--red); text-transform:uppercase;
+}
+.agent-body{ padding:1.3rem 1.1rem 1.6rem; }
+.agent-name{ font-family:var(--f-display); font-size:1.7rem; letter-spacing:.01em; margin-bottom:.9rem; }
+
+.agent-full-name{
+    font-family:var(--f-mono); font-size:.72rem; letter-spacing:.08em;
+    color:var(--text-dim); margin-top:-.45rem; margin-bottom:1rem;
+    text-transform:none;
+}
+
+.agent-stats{ display:flex; flex-direction:column; gap:.55rem; margin-bottom:1rem; }
+.stat-row{ display:grid; grid-template-columns:80px 1fr 32px; align-items:center; gap:.6rem; }
+.stat-label{ font-family:var(--f-mono); font-size:.6rem; letter-spacing:.12em; color:var(--text-dimmer); text-transform:uppercase; }
+.stat-track{ height:5px; background:var(--line); position:relative; overflow:hidden; }
+.stat-fill{ position:absolute; inset:0; width:0; background:linear-gradient(90deg,var(--red-dim),var(--red)); animation:fillstat 1.4s var(--ease) forwards; animation-play-state:paused; }
+.stat-val{ font-family:var(--f-mono); font-size:.65rem; color:var(--text-dim); text-align:right; }
+@keyframes fillstat{ to{ width:var(--w); } }
+.agent-bio{ font-size:.88rem; color:var(--text-dim); line-height:1.75; border-top:1px solid var(--line); padding-top:1rem; }
+
+/* =========================================================
+   WEDDING DETAILS
+   ========================================================= */
+.details{ display:grid; grid-template-columns:1fr; gap:1.4rem; max-width:640px; margin:0 auto 3rem; padding:0 1.1rem; position:relative; z-index:1; }
+@media(min-width:720px){ .details{ grid-template-columns:1fr 1fr; } }
+.detail-card{
+    border:1px solid var(--line); background:var(--panel); padding:1.6rem 1.4rem;
+    position:relative; transition:border-color var(--t-fast);
+}
+.detail-card:hover{ border-color:var(--red); }
+.detail-idx{ font-family:var(--f-mono); font-size:.65rem; letter-spacing:.2em; color:var(--red); margin-bottom:.5rem; }
+.detail-name{ font-family:var(--f-display); font-size:1.4rem; letter-spacing:.01em; margin-bottom:1.1rem; }
+.detail-row{ display:flex; gap:.6rem; padding:.55rem 0; border-top:1px solid var(--line); font-size:.85rem; }
+.detail-row:first-of-type{ border-top:none; }
+.detail-row .k{ font-family:var(--f-mono); font-size:.62rem; letter-spacing:.12em; color:var(--text-dimmer); text-transform:uppercase; width:74px; flex-shrink:0; padding-top:.15rem; }
+.detail-row .v{ color:var(--cream); font-weight:500; }
+.detail-card .diag-btn{ margin-top:1.2rem; font-size:.72rem; padding:.7rem 1.3rem; }
+
+/* rundown timeline */
+.rundown{ max-width:520px; margin:0 auto; padding:0 1.1rem; position:relative; z-index:1; }
+.rundown-item{ display:flex; gap:1.1rem; position:relative; padding-bottom:1.8rem; animation:riseInSmall var(--t-mid) var(--ease) backwards; }
+.rundown-item:last-child{ padding-bottom:0; }
+.rundown-item::before{
+    content:''; position:absolute; left:44px; top:34px; bottom:0; width:1px;
+    background:var(--line-bright);
+}
+.rundown-item:last-child::before{ display:none; }
+.rundown-time{
+    width:88px; min-width:88px; flex-shrink:0; text-align:center;
+    font-family:var(--f-mono); font-size:.65rem; letter-spacing:.06em; color:var(--red);
+    display:flex; flex-direction:column; align-items:center; gap:.4rem;
+    white-space:nowrap;
+}
+.rundown-time > span:first-child{ white-space:nowrap; }
+.rundown-dot{ width:12px; height:12px; border:2px solid var(--red); border-radius:50%; background:var(--void); }
+.rundown-text{ padding-top:.05rem; }
+.rundown-text .t{ font-family:var(--f-ui); font-weight:700; font-size:.95rem; letter-spacing:.03em; text-transform:uppercase; margin-bottom:.2rem; }
+.rundown-text .d{ font-size:.82rem; color:var(--text-dim); }
+
+/* =========================================================
+   OUR STORY / MISSION CARDS
+   ========================================================= */
+.story-intro{ text-align:center; max-width:560px; margin:0 auto 3rem; padding:0 1.1rem; position:relative; z-index:1; }
+.story-intro p{ font-size:.92rem; color:var(--text-dim); line-height:1.9; }
+.story-grid{ display:grid; grid-template-columns:1fr; gap:1.8rem; max-width:1100px; margin:0 auto; padding:0 1.1rem; position:relative; z-index:1; }
+@media(min-width:760px){ .story-grid{ grid-template-columns:1fr 1fr; } }
+@media(min-width:1080px){ .story-grid{ grid-template-columns:repeat(3,1fr); } }
+
+.story-card{
+    position:relative; border:1px solid var(--line); background:var(--panel);
+    cursor:pointer; overflow:hidden; min-height:480px; display:flex; flex-direction:column;
+    transition:border-color var(--t-fast), transform var(--t-fast);
+    animation:riseIn var(--t-slow) var(--ease) backwards;
+}
+.story-card:nth-child(1){ animation-delay:0ms; }
+.story-card:nth-child(2){ animation-delay:140ms; }
+.story-card:nth-child(3){ animation-delay:280ms; }
+.story-card:hover{ border-color:var(--red); transform:translateY(-6px); }
+.story-num-bg{
+    position:absolute; top:-.6rem; right:.2rem; font-family:var(--f-display);
+    font-size:6.5rem; color:var(--red); opacity:.06; line-height:1; z-index:0; pointer-events:none;
+}
+.story-media{
+    height:62%; position:relative; overflow:hidden;
+    background:linear-gradient(150deg,var(--panel-2),var(--void-2));
+    display:flex; align-items:center; justify-content:center;
+}
+.story-media img{ width:100%; height:100%; object-fit:cover; transition:transform var(--t-mid) var(--ease); }
+.story-card:hover .story-media img{ transform:scale(1.06); }
+.story-media-ph{ font-family:var(--f-mono); font-size:.68rem; letter-spacing:.14em; color:var(--text-dimmer); text-align:center; padding:1rem; }
+.story-media::after{ content:''; position:absolute; inset:0; background:linear-gradient(0deg, rgba(8,11,15,.85), transparent 45%); }
+.story-status{
+    position:absolute; top:.9rem; left:.9rem; z-index:2;
+    font-family:var(--f-mono); font-size:.58rem; letter-spacing:.14em; color:var(--teal);
+    border:1px solid var(--teal); padding:.25em .6em; text-transform:uppercase;
+}
+.story-mission-tag{
+    position:absolute; bottom:.8rem; left:.9rem; z-index:2;
+    font-family:var(--f-mono); font-size:.62rem; letter-spacing:.2em; color:var(--red); text-transform:uppercase;
+}
+.story-info{ flex:1; padding:1.2rem 1.2rem 1.4rem; display:flex; flex-direction:column; justify-content:space-between; border-top:1px solid var(--line); position:relative; z-index:1; }
+.story-title{ font-family:var(--f-display); font-size:1.25rem; letter-spacing:.01em; margin-bottom:.35rem; line-height:1.15; }
+.story-sub{ font-family:var(--f-mono); font-size:.72rem; letter-spacing:.06em; color:var(--text-dim); margin-bottom:1rem; }
+.story-cta{
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:var(--f-mono); font-size:.65rem; letter-spacing:.14em; color:var(--red);
+    text-transform:uppercase; padding-top:.9rem; border-top:1px solid var(--line); margin-top:auto;
+}
+
+/* progression bar under grid */
+.mission-progress{ display:flex; align-items:center; justify-content:center; gap:.5rem; margin-top:2.6rem; padding:0 1.1rem; }
+.mission-progress .seg{ width:36px; height:2px; background:var(--line-bright); }
+.mission-progress .dot{
+    width:8px; height:8px; border-radius:50%; border:2px solid var(--red); background:var(--void);
+}
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+.modal-overlay{ display:none; position:fixed; inset:0; background:rgba(4,6,8,.92); z-index:1000; align-items:center; justify-content:center; padding:1rem; backdrop-filter:blur(3px); }
+.modal-overlay.active{ display:flex; animation:fadeIn 260ms var(--ease); }
+.modal{
+    width:100%; max-width:640px; max-height:92dvh; background:var(--panel); border:1px solid var(--line-bright);
+    overflow-y:auto; position:relative; animation:scaleIn 320ms var(--ease);
+}
+.modal-close{
+    position:absolute; top:.9rem; right:.9rem; width:38px; height:38px; z-index:20;
+    border:1px solid var(--red); color:var(--red); background:var(--void);
+    display:flex; align-items:center; justify-content:center; font-size:1.3rem; transition:all var(--t-fast);
+}
+.modal-close:hover{ background:var(--red); color:var(--void); }
+.modal-media{ position:relative; height:280px; background:linear-gradient(150deg,var(--panel-2),var(--void-2)); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.modal-media img{ width:100%; height:100%; object-fit:cover; }
+.modal-media::after{ content:''; position:absolute; inset:0; background:linear-gradient(0deg,rgba(16,23,31,1),transparent 55%); }
+.modal-media-ph{ font-family:var(--f-mono); font-size:.72rem; letter-spacing:.16em; color:var(--text-dimmer); }
+.modal-head-over{ position:absolute; bottom:1rem; left:1.3rem; right:1.3rem; z-index:2; }
+.modal-mission{ font-family:var(--f-mono); font-size:.68rem; letter-spacing:.24em; color:var(--red); text-transform:uppercase; margin-bottom:.4rem; }
+.modal-title{ font-family:var(--f-display); font-size:1.7rem; letter-spacing:.01em; }
+.modal-sub{ font-family:var(--f-mono); font-size:.72rem; color:var(--text-dim); letter-spacing:.05em; margin-top:.3rem; }
+.modal-body{ padding:1.6rem 1.3rem; }
+.modal-text{ font-size:.94rem; line-height:1.85; color:var(--text-dim); white-space:pre-wrap; }
+.modal-nav{ display:flex; align-items:center; justify-content:space-between; padding:1.1rem 1.3rem; border-top:1px solid var(--line); gap:.8rem; }
+.modal-nav-btn{ font-family:var(--f-mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; padding:.6rem 1rem; border:1px solid var(--line-bright); color:var(--text-dim); min-height:42px; transition:all var(--t-fast); }
+.modal-nav-btn:hover:not(:disabled){ border-color:var(--red); color:var(--red); }
+.modal-nav-btn:disabled{ opacity:.3; }
+.modal-counter{ font-family:var(--f-mono); font-size:.65rem; letter-spacing:.1em; color:var(--text-dimmer); }
+
+/* =========================================================
+   GIFT / SUPPLY DROP SECTION
+   ========================================================= */
+.gift-wrap{ max-width:560px; margin:0 auto; padding:0 1.1rem; position:relative; z-index:1; }
+.gift-card{ border:1px solid var(--line); background:var(--panel); padding:1.8rem 1.5rem; text-align:center; }
+.gift-card p{ color:var(--text-dim); font-size:.88rem; margin-bottom:1.6rem; line-height:1.8; }
+.gift-methods{ display:grid; grid-template-columns:1fr; gap:1rem; }
+@media(min-width:520px){ .gift-methods{ grid-template-columns:1fr 1fr; } }
+.gift-methods.gift-methods-single{ grid-template-columns:1fr; max-width:340px; margin:0 auto; }
+.gift-method{ border:1px solid var(--line); padding:1.1rem; text-align:left; position:relative; }
+.gift-method .k{ font-family:var(--f-mono); font-size:.6rem; letter-spacing:.16em; color:var(--red); margin-bottom:.5rem; text-transform:uppercase; }
+.gift-method .num{ font-family:var(--f-ui); font-weight:700; font-size:1.05rem; letter-spacing:.03em; margin-bottom:.2rem; }
+.gift-method .name{ font-size:.8rem; color:var(--text-dim); margin-bottom:.8rem; }
+.copy-btn{
+    font-family:var(--f-mono); font-size:.62rem; letter-spacing:.1em; color:var(--text-dim);
+    border:1px solid var(--line-bright); padding:.4em .8em; text-transform:uppercase; transition:all var(--t-fast);
+}
+.copy-btn:hover{ border-color:var(--red); color:var(--red); }
+.copy-btn.copied{ border-color:var(--teal); color:var(--teal); }
+
+/* =========================================================
+   FAQ / FIELD NOTES
+   ========================================================= */
+.faq-wrap{ max-width:620px; margin:0 auto; padding:0 1.1rem; position:relative; z-index:1; display:flex; flex-direction:column; gap:.8rem; }
+.faq-item{ border:1px solid var(--line); background:var(--panel); overflow:hidden; }
+.faq-q{
+    width:100%; display:flex; align-items:center; justify-content:space-between; gap:1rem;
+    padding:1.1rem 1.2rem; text-align:left; font-family:var(--f-ui); font-weight:700; font-size:.92rem;
+    letter-spacing:.02em;
+}
+.faq-q .idx{ font-family:var(--f-mono); color:var(--red); font-size:.75rem; margin-right:.7rem; }
+.faq-q .chev{ font-family:var(--f-mono); color:var(--text-dimmer); transition:transform var(--t-fast); flex-shrink:0; }
+.faq-item.open .chev{ transform:rotate(45deg); color:var(--red); }
+.faq-a{ max-height:0; overflow:hidden; transition:max-height var(--t-mid) var(--ease); }
+.faq-a-inner{ padding:0 1.2rem 1.2rem 2.6rem; font-size:.85rem; color:var(--text-dim); line-height:1.8; }
+
+/* =========================================================
+   RSVP
+   ========================================================= */
+.rsvp-shell{ max-width:600px; margin:0 auto; padding:0 1.1rem; position:relative; z-index:1; }
+.rsvp-shell form{ border:1px solid var(--line); background:var(--panel); padding:1.8rem 1.5rem 2rem; }
+.form-group{ margin-bottom:1.4rem; }
+.form-label{ display:block; font-family:var(--f-mono); font-size:.68rem; font-weight:600; letter-spacing:.16em; margin-bottom:.55rem; text-transform:uppercase; color:var(--red); }
+.form-input,.form-textarea,.form-select{
+    width:100%; padding:.85rem .9rem; background:var(--void-2); border:1px solid var(--line);
+    color:var(--cream); font-size:.95rem; font-family:var(--f-ui); transition:border-color var(--t-fast);
+}
+.form-input:focus,.form-textarea:focus,.form-select:focus{ outline:none; border-color:var(--red); }
+.form-textarea{ resize:vertical; min-height:100px; }
+.form-radio-group{ display:flex; gap:.8rem; flex-wrap:wrap; }
+.radio-option{
+    display:flex; align-items:center; gap:.55rem; cursor:pointer; padding:.8rem 1rem;
+    border:1px solid var(--line); background:var(--void-2); transition:all var(--t-fast); min-height:48px;
+    font-size:.85rem; flex:1; min-width:130px; font-family:var(--f-ui); font-weight:600; letter-spacing:.03em;
+}
+.radio-option input{ width:16px; height:16px; accent-color:var(--red); }
+.radio-option:has(input:checked){ border-color:var(--red); background:var(--red-soft); }
+.form-error{ display:none; font-family:var(--f-mono); font-size:.68rem; color:var(--red); margin-top:.5rem; letter-spacing:.05em; }
+.form-error.show{ display:block; }
+.form-group.error .form-input,.form-group.error .form-textarea,.form-group.error .form-select{ border-color:var(--red); }
+.form-success{ display:none; padding:1.4rem; background:var(--teal-dim); border:1px solid var(--teal); color:var(--teal); text-align:center; margin-top:1.2rem; font-family:var(--f-mono); font-size:.8rem; letter-spacing:.08em; line-height:1.8; }
+.form-success.show{ display:block; animation:riseInSmall var(--t-mid) var(--ease); }
+.rsvp-deadline{ text-align:center; font-family:var(--f-mono); font-size:.68rem; letter-spacing:.1em; color:var(--text-dimmer); margin-top:1.2rem; }
+
+/* =========================================================
+   CLOSING
+   ========================================================= */
+.closing{ text-align:center; padding:6rem 1.1rem 5rem; position:relative; overflow:hidden; }
+.closing::before{
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(circle at 50% 0%, rgba(255,70,85,.10), transparent 55%);
+}
+.closing-inner{ position:relative; z-index:1; max-width:520px; margin:0 auto; }
+.closing-title{ font-family:var(--f-display); font-size:clamp(2rem,7vw,2.9rem); letter-spacing:.01em; margin:1.4rem 0 2.4rem; line-height:1.05; }
+.closing-title em{ color:var(--red); font-style:normal; }
+.closing-names{ font-family:var(--f-display); font-size:1.6rem; letter-spacing:.02em; margin-bottom:1.4rem; }
+.closing-meta{ font-family:var(--f-mono); font-size:.78rem; letter-spacing:.16em; color:var(--text-dim); line-height:2; margin-bottom:2.2rem; }
+.closing-text{ font-size:.9rem; color:var(--text-dim); line-height:1.9; margin-bottom:2rem; }
+.closing-sign{ font-family:var(--f-mono); font-size:.78rem; letter-spacing:.16em; color:var(--text-dim); padding-top:1.8rem; border-top:1px solid var(--line); margin-top:1.2rem; }
+.closing-sign strong{ color:var(--cream); font-family:var(--f-ui); font-size:.95rem; letter-spacing:.03em; }
+.closing-foot{ margin-top:2.6rem; font-family:var(--f-mono); font-size:.6rem; letter-spacing:.2em; color:var(--text-dimmer); }
+
+/* =========================================================
+   MUSIC PLAYER
+   ========================================================= */
+.music-player{
+    display:none;
+    position:fixed; bottom:1.6rem; right:1.1rem; width:50px; height:50px; z-index:100;
+    border:1px solid var(--red); background:var(--void);
+    clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
+    display:flex; align-items:center; justify-content:center; font-size:1.15rem; color:var(--red);
+    transition:all var(--t-fast);
+}
+.music-player.visible{ display:flex; }
+.music-player:hover{ background:var(--red); color:var(--void); }
+.music-player.playing{ animation:pulseSoft 1.4s infinite; }
+.music-bars{ display:flex; align-items:flex-end; gap:2px; height:16px; }
+.music-bars span{ width:3px; background:currentColor; animation:barbounce 900ms ease-in-out infinite; }
+.music-bars span:nth-child(1){ height:40%; animation-delay:0s; }
+.music-bars span:nth-child(2){ height:100%; animation-delay:.15s; }
+.music-bars span:nth-child(3){ height:65%; animation-delay:.3s; }
+@keyframes barbounce{ 0%,100%{ transform:scaleY(.4);} 50%{ transform:scaleY(1);} }
+.music-player:not(.playing) .music-bars span{ animation-play-state:paused; }
+
+/* =========================================================
+   RESPONSIVE TUNING
+   ========================================================= */
+@media(max-width:480px){
+    .hero{ padding:5.5rem 1rem 3.5rem; }
+    .hero-date-row .big{ font-size:2.4rem; }
+    .count-cell{ width:56px; padding:.55rem .2rem; }
+    .count-num{ font-size:1.2rem; }
+    .section-title{ font-size:1.7rem; }
+    .story-card{ min-height:420px; }
+    section{ padding:4rem 0; }
+}
+@media(min-width:1024px){
+    section{ padding:7rem 0; }
+}
+@media(max-width:480px){
+    .rundown{ padding:0 .8rem; }
+    .rundown-item{ gap:.7rem; }
+    .rundown-time{ width:88px; min-width:88px; font-size:.62rem; }
+    .rundown-item::before{ left:44px; }
+    .rundown-text .t{ font-size:.88rem; }
+    .rundown-text .d{ font-size:.78rem; }
+}
+
+</style>
+</head>
+<body>
+
+<script>
+const CONFIG = {
+    WEDDING: {
+        groom:"Adli", bride:"Aca",
+        groomRole:"THE SENTINEL", brideRole:"THE INITIATOR",
+        date:"25 October 2026", isoDate:"2026-10-25T08:00:00",
+        venue:"Bale Pare", location:"Kota Baru Parahyangan",
+        ceremonyTime:"08.00 WIB", receptionTime:"11.00 WIB",
+        groomFullName:"Adli Ahmad Rizaldy",
+        brideFullName:"Naswa Dhiya Prameswari"
+    },
+    GOOGLE_APPS_SCRIPT_URL:"https://script.google.com/macros/s/AKfycbyKYyK0FDY6ejxws3d47Z7ITgTTp9b2cE8MtXTAL9uku7W-4RDIBTX5_uuqqOkI-G-WrA/exec",
+    GOOGLE_MAPS_URL:"https://www.google.com/maps/search/?api=1&query=Bale+Pare+Bike+Park+Kota+Baru+Parahyangan",
+    ASSETS:{
+        HERO:"/assets/images/hero.jpg",
+        AGENT_GROOM:"/assets/images/agent-groom.jpg",
+        AGENT_BRIDE:"/assets/images/agent-bride.jpg",
+        MUSIC_LOADING:"assets/music/loading-hum.mp3",
+        MUSIC_MAIN:"assets/music/valorant-theme.mp3"
+    },
+    RUNDOWN:[
+        { time:"07.30 WIB", title:"Guest Arrival", desc:"Guests begin to arrive." },
+        { time:"08.00 WIB", title:"Akad Nikah", desc:"The wedding ceremony begins." },
+        { time:"11.00 WIB", title:"Reception Begins", desc:"Reception begins." },
+        { time:"13.00 WIB", title:"Mission Complete", desc:"The celebration concludes." }
+    ],
+    GIFT:{
+        note:"Your presence is the only gift we ask for — but if you'd like to send well-wishes in another form, this channel is open.",
+        bankName:"BCA", bankNumber:"7940324143", bankHolder:"Adli Ahmad Rizaldy"
+    },
+    FAQ:[
+        { q:"WHAT SHOULD I WEAR?", a:"Formal traditional attire." },
+        { q:"CAN I BRING A PLUS ONE?", a:"Absolutely. Bring whoever makes you happy and comfortable." },
+        { q:"IS THERE PARKING AVAILABLE?", a:"Parking is available at the venue." },
+        { q:"ARE KIDS WELCOME?", a:"Absolutely! Children are very welcome to join the celebration." }
+    ],
+    STORIES:[
+        { id:1, mission:"MISSION 01", status:"COMPLETE", title:"THE UNEXPECTED ENCOUNTER", subtitle:"BUKBER YANG TIDAK DISENGAJA",
+          image:"/assets/images/story-01.jpg",
+          content:"Cerita pertemuan pertama kami akan ditambahkan di sini.\n\nGanti bagian ini dengan cerita sebenarnya dari perjalanan hubungan Aca dan Adli." },
+        { id:2, mission:"MISSION 02", status:"COMPLETE", title:"SAME SQUAD", subtitle:"HOBBY YANG SAMA: VALORANT",
+          image:"/assets/images/story-02.jpg",
+          content:"Kami menemukan bahwa kami memiliki hobby yang sama — bermain VALORANT bersama.\n\nCerita lengkap tentang bagaimana hobby ini memperkuat ikatan kami akan ditambahkan di sini." },
+        { id:3, mission:"MISSION 03", status:"ACTIVE", title:"THE FINAL MISSION", subtitle:"TOWARD FOREVER",
+          image:"/assets/images/story-03.jpg",
+          content:"Dari bermain bersama hingga memutuskan untuk menjalani kehidupan bersama.\n\nCerita tentang bagaimana kami tiba pada keputusan untuk menikah akan ditambahkan di sini." }
+    ]
+};
+</script>
+
+<div class="scan-global"></div>
+<div class="noise"></div>
+
+<!-- LOADING -->
+<div class="loading-screen" id="loadingScreen">
+    <div class="loading-inner">
+        <div class="loading-tag">INITIALIZING SEQUENCE</div>
+        <div class="loading-title">WEDDING <em>PROTOCOL</em></div>
+        <div class="loading-sub">ESTABLISHING CONNECTION...</div>
+        <div class="loading-track"><div class="loading-bar"></div></div>
+        <div class="loading-pct" id="loadingPct">SYSTEM READY</div>
+        <div class="loading-coords"><span>LAT 07.0S</span><span>DECRYPTING</span><span>LON 107.6E</span></div>
+    </div>
+</div>
+
+<!-- READY -->
+<div class="screen ready-screen" id="readyScreen">
+    <div class="ready-frame">
+        <div class="ready-eyebrow">MISSION FOUND</div>
+        <div class="ready-title">A NEW CHAPTER<br>IS ABOUT TO <em>BEGIN</em></div>
+        <div class="ready-mission">TWO AGENTS. ONE MISSION. FOREVER.</div>
+        <div class="ready-vs">
+            <span class="name" id="readyGroom">ADLI</span>
+            <span class="x">×</span>
+            <span class="name" id="readyBride">ACA</span>
+        </div>
+        <div class="ready-status-row">
+            <span class="tag on">STATUS: READY</span>
+            <span class="tag red">CLASS: WEDDING</span>
+        </div>
+        <button class="diag-btn primary block" id="readyBtn">▶ READY</button>
+    </div>
+</div>
+
+<!-- MAIN -->
+<div class="screen main-screen" id="mainScreen">
+
+    <!-- HERO -->
+    <div class="hero" id="heroSection">
+        <div class="hero-frame-top"><span>MISSION_ID // AA-2026</span><span>● LIVE</span></div>
+        <div class="hero-radar"></div>
+        <div class="hero-content">
+            <div class="eyebrow">MISSION BRIEFING</div>
+            <h1 class="hero-names">
+                <span class="hero-agent">
+                    <span id="heroGroom">ADLI</span>
+                    <span class="hero-agent-fullname">ADLI AHMAD RIZALDY</span>
+                </span>
+                <span class="hero-amp">&</span>
+                <span class="hero-agent">
+                    <span id="heroBride">ACA</span>
+                    <span class="hero-agent-fullname">NASWA DHIYA PRAMESWARI</span>
+                </span>
+            </h1>
+            <div class="hero-getting">ARE GETTING MARRIED</div>
+
+            <div class="hero-date-row">
+                <span class="big" id="heroDay">25</span>
+                <span class="stack"><span id="heroMonth">OCTOBER</span><br><span id="heroYear">2026</span></span>
+            </div>
+            <div class="hero-venue" id="heroVenue">BALE PARE</div>
+            <div class="hero-loc" id="heroLocation">KOTA BARU PARAHYANGAN</div>
+
+            <div class="countdown" id="countdown">
+                <div class="count-cell"><div class="count-num" id="cdDays">00</div><div class="count-lbl">Days</div></div>
+                <div class="count-cell"><div class="count-num" id="cdHours">00</div><div class="count-lbl">Hrs</div></div>
+                <div class="count-cell"><div class="count-num" id="cdMins">00</div><div class="count-lbl">Min</div></div>
+                <div class="count-cell"><div class="count-num" id="cdSecs">00</div><div class="count-lbl">Sec</div></div>
+            </div>
+
+            <div class="hero-cta">
+                <button class="diag-btn primary" id="saveDateBtn">SAVE THE DATE</button>
+                <button class="diag-btn ghost" id="openMapBtn">OPEN LOCATION</button>
+            </div>
+        </div>
+        <div class="hero-frame-bottom"><span></span><span>ENCRYPTED CHANNEL</span></div>
+    </div>
+
+    <!-- AGENT PROFILES -->
+    <section id="agentsSection">
+        <div class="section-watermark">VS</div>
+        <div class="section-head">
+            <div class="eyebrow">AGENT SELECT</div>
+            <h2 class="section-title">MEET THE <em>AGENTS</em></h2>
+            <p class="section-desc">Two operatives, one squad. Here's who's leading this mission.</p>
+        </div>
+        <div class="agents">
+            <div class="agent-card">
+                <div class="agent-top"><span>AGENT_02</span><span class="tag on">ONLINE</span></div>
+                <div class="agent-portrait">
+                    <img id="brideImg" src="" alt="Aca" style="display:none;">
+                    <div class="agent-portrait-ph">AGENT PORTRAIT<br>PLACEHOLDER</div>
+                    <div class="agent-role" id="brideRole">THE INITIATOR</div>
+                </div>
+                <div class="agent-body">
+                    <div class="agent-name" id="agentBrideName">ACA</div>
+                    <div class="agent-full-name" id="agentBrideFullName">Naswa Dhiya Prameswari</div>
+                    <div class="agent-stats">
+                        <div class="stat-row"><span class="stat-label">Charm</span><div class="stat-track"><div class="stat-fill" style="--w:92%"></div></div><span class="stat-val">92</span></div>
+                        <div class="stat-row"><span class="stat-label">Patience</span><div class="stat-track"><div class="stat-fill" style="--w:80%"></div></div><span class="stat-val">80</span></div>
+                        <div class="stat-row"><span class="stat-label">Loyalty</span><div class="stat-track"><div class="stat-fill" style="--w:100%"></div></div><span class="stat-val">100</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="agent-card">
+                <div class="agent-top"><span>AGENT_01</span><span class="tag on">ONLINE</span></div>
+                <div class="agent-portrait">
+                    <img id="groomImg" src="" alt="Adli" style="display:none;">
+                    <div class="agent-portrait-ph">AGENT PORTRAIT<br>PLACEHOLDER</div>
+                    <div class="agent-role" id="groomRole">THE SENTINEL</div>
+                </div>
+                <div class="agent-body">
+                    <div class="agent-name" id="agentGroomName">ADLI</div>
+                    <div class="agent-full-name" id="agentGroomFullName">Adli Ahmad Rizaldy</div>
+                    <div class="agent-stats">
+                        <div class="stat-row"><span class="stat-label">Loyalty</span><div class="stat-track"><div class="stat-fill" style="--w:100%"></div></div><span class="stat-val">100</span></div>
+                        <div class="stat-row"><span class="stat-label">Humor</span><div class="stat-track"><div class="stat-fill" style="--w:88%"></div></div><span class="stat-val">88</span></div>
+                        <div class="stat-row"><span class="stat-label">Aim</span><div class="stat-track"><div class="stat-fill" style="--w:75%"></div></div><span class="stat-val">75</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WEDDING DETAILS -->
+    <section class="alt" id="detailsSection">
+        <div class="section-head">
+            <div class="eyebrow">MISSION PARAMETERS</div>
+            <h2 class="section-title">WEDDING <em>INFORMATION</em></h2>
+            <p class="section-desc">Coordinates and schedule for the operation.</p>
+        </div>
+        <div class="details">
+            <div class="detail-card hud-corners">
+                <div class="detail-idx">01 / CEREMONY</div>
+                <div class="detail-name">AKAD</div>
+                <div class="detail-row"><span class="k">Date</span><span class="v" id="ceremonyDate">25 October 2026</span></div>
+                <div class="detail-row"><span class="k">Time</span><span class="v" id="ceremonyTime">TBA</span></div>
+                <div class="detail-row"><span class="k">Venue</span><span class="v" id="ceremonyVenue">Bale Pare, Kota Baru Parahyangan</span></div>
+                <button class="diag-btn ghost" id="ceremonyMapBtn">VIEW LOCATION</button>
+            </div>
+            <div class="detail-card hud-corners">
+                <div class="detail-idx">02 / RECEPTION</div>
+                <div class="detail-name">RESEPSI</div>
+                <div class="detail-row"><span class="k">Date</span><span class="v" id="receptionDate">25 October 2026</span></div>
+                <div class="detail-row"><span class="k">Time</span><span class="v" id="receptionTime">TBA</span></div>
+                <div class="detail-row"><span class="k">Venue</span><span class="v" id="receptionVenue">Bale Pare, Kota Baru Parahyangan</span></div>
+                <button class="diag-btn ghost" id="receptionMapBtn">VIEW LOCATION</button>
+            </div>
+        </div>
+
+        <div class="divider"><span>RUNDOWN</span></div>
+        <div class="rundown" id="rundownList"></div>
+    </section>
+
+    <!-- OUR STORY -->
+    <section id="storySection">
+        <div class="section-watermark">003</div>
+        <div class="section-head">
+            <div class="eyebrow">MISSION LOG</div>
+            <h2 class="section-title">OUR <em>STORY</em></h2>
+        </div>
+        <div class="story-intro">
+            <p>From a random encounter to a lifetime mission. Three chapters, three missions — tap each one to open the full briefing.</p>
+        </div>
+        <div class="story-grid" id="storyGrid"></div>
+        <div class="mission-progress" id="missionProgress">
+            <div class="dot"></div><div class="seg"></div>
+            <div class="dot"></div><div class="seg"></div>
+            <div class="dot"></div>
+        </div>
+    </section>
+
+    <!-- STORY MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="storyModal">
+            <button class="modal-close" id="modalCloseBtn">&times;</button>
+            <div class="modal-media" id="modalMedia">
+                <img id="modalImg" src="" alt="" style="display:none;">
+                <span class="modal-media-ph" id="modalImgPh">LOADING MISSION ARTWORK...</span>
+                <div class="modal-head-over">
+                    <div class="modal-mission" id="modalMission">MISSION 01</div>
+                    <div class="modal-title" id="modalTitle">Title</div>
+                    <div class="modal-sub" id="modalSubtitle">Subtitle</div>
+                </div>
+            </div>
+            <div class="modal-body"><p class="modal-text" id="modalText">Story content</p></div>
+            <div class="modal-nav">
+                <button class="modal-nav-btn" id="prevMissionBtn">← PREV</button>
+                <span class="modal-counter" id="missionCounter">1 / 3</span>
+                <button class="modal-nav-btn" id="nextMissionBtn">NEXT →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- GIFT -->
+    <section class="alt" id="giftSection">
+        <div class="section-head">
+            <div class="eyebrow">SUPPLY DROP</div>
+            <h2 class="section-title">WEDDING <em>GIFT</em></h2>
+        </div>
+        <div class="gift-wrap">
+            <div class="gift-card hud-corners">
+                <p id="giftNote">Your presence is the only gift we ask for — but if you'd like to send well-wishes in another form, this channel is open.</p>
+                <div class="gift-methods gift-methods-single">
+                    <div class="gift-method">
+                        <div class="k">Bank Transfer — BCA</div>
+                        <div class="num" id="giftBankNumber">7940324143</div>
+                        <div class="name" id="giftBankHolder">a.n. Adli Ahmad Rizaldy</div>
+                        <button class="copy-btn" data-copy="7940324143">COPY NUMBER</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faqSection">
+        <div class="section-head">
+            <div class="eyebrow">FIELD NOTES</div>
+            <h2 class="section-title">GOOD TO <em>KNOW</em></h2>
+        </div>
+        <div class="faq-wrap" id="faqWrap"></div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="alt" id="rsvpSection">
+        <div class="section-head">
+            <div class="eyebrow">MISSION CONFIRMATION</div>
+            <h2 class="section-title">WILL YOU <em>JOIN</em>?</h2>
+            <p class="section-desc">Confirm your presence for our final mission.</p>
+        </div>
+        <div class="rsvp-shell">
+            <form id="rsvpForm">
+                <div class="form-group">
+                    <label class="form-label">Nama Lengkap</label>
+                    <input type="text" id="nameInput" class="form-input" placeholder="Masukkan nama lengkap Anda" required>
+                    <div class="form-error" id="nameError">⚠ NAMA HARUS DIISI (MIN. 2 KARAKTER)</div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Kehadiran</label>
+                    <div class="form-radio-group">
+                        <label class="radio-option"><input type="radio" name="attendance" value="hadir" required><span>HADIR</span></label>
+                        <label class="radio-option"><input type="radio" name="attendance" value="tidak" required><span>TIDAK HADIR</span></label>
+                    </div>
+                    <div class="form-error" id="attendanceError">⚠ PILIH KEHADIRAN ANDA</div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Jumlah Tamu</label>
+                    <select id="guestsInput" class="form-select" required>
+                        <option value="">Pilih jumlah tamu</option>
+                        <option value="1">1 Orang</option><option value="2">2 Orang</option>
+                        <option value="3">3 Orang</option><option value="4">4 Orang</option>
+                        <option value="5">5+ Orang</option>
+                    </select>
+                    <div class="form-error" id="guestsError">⚠ PILIH JUMLAH TAMU</div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Pesan & Doa</label>
+                    <textarea id="messageInput" class="form-textarea" placeholder="Tulis pesan dan doa untuk kami..."></textarea>
+                </div>
+                <button type="submit" class="diag-btn primary block" id="submitBtn">CONFIRM RSVP</button>
+                <div class="form-success" id="formSuccess">✓ RSVP CONFIRMED<br>YOUR RESPONSE HAS BEEN RECEIVED. THANK YOU, AGENT.</div>
+            </form>
+            <div class="rsvp-deadline">PLEASE CONFIRM BEFORE — 11 OCTOBER 2026 (H-14)</div>
+        </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="closing" id="closingSection">
+        <div class="closing-inner">
+            <div class="eyebrow" style="justify-content:center;">MISSION COMPLETE</div>
+            <h2 class="closing-title">THE NEXT CHAPTER<br><em>STARTS HERE</em></h2>
+            <div class="closing-names"><span id="closingGroom">ADLI</span> & <span id="closingBride">ACA</span></div>
+            <div class="closing-meta">
+                <div id="closingDate">25 OCTOBER 2026</div>
+                <div id="closingVenue">BALE PARE</div>
+                <div id="closingLocation">KOTA BARU PARAHYANGAN</div>
+            </div>
+            <p class="closing-text">Thank you for being part of our journey.</p>
+            <div class="closing-sign">WITH LOVE,<br><strong><span id="signGroom">ADLI</span> & <span id="signBride">ACA</span></strong></div>
+            <div class="closing-foot">// END OF TRANSMISSION //</div>
+        </div>
+    </section>
+</div>
+
+<button class="music-player" id="musicPlayer" title="Toggle music" aria-label="Toggle music">
+    <span class="music-bars"><span></span><span></span><span></span></span>
+</button>
+
+<!-- Loading ambience: plays while the visitor is on the loading/READY sequence -->
+<audio id="loadingMusic" preload="auto" loop autoplay playsinline>
+    <source src="assets/music/loading-hum.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Main VALORANT theme: starts only after READY is pressed -->
+<audio id="backgroundMusic" preload="auto" loop playsinline>
+    <source src="assets/music/valorant-theme.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const AppState = {
+    currentMission:1,
+    musicPlaying:false,
+    loadingMusicPlaying:false
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    populateWeddingData();
+    populateAgents();
+    populateRundown();
+    populateStories();
+    populateGift();
+    populateFAQ();
+    setupEventListeners();
+    handleLoadingScreen();
+    startCountdown();
+});
+
+function populateWeddingData(){
+    const w = CONFIG.WEDDING;
+    document.getElementById('heroGroom').textContent = w.groom.toUpperCase();
+    document.getElementById('heroBride').textContent = w.bride.toUpperCase();
+    document.getElementById('readyGroom').textContent = w.groom.toUpperCase();
+    document.getElementById('readyBride').textContent = w.bride.toUpperCase();
+
+    const d = new Date(w.isoDate);
+    document.getElementById('heroDay').textContent = d.getDate();
+    document.getElementById('heroMonth').textContent = d.toLocaleDateString('en-US',{month:'long'}).toUpperCase();
+    document.getElementById('heroYear').textContent = d.getFullYear();
+    document.getElementById('heroVenue').textContent = w.venue.toUpperCase();
+    document.getElementById('heroLocation').textContent = w.location.toUpperCase();
+
+    document.getElementById('ceremonyVenue').textContent = `${w.venue}, ${w.location}`;
+    document.getElementById('receptionVenue').textContent = `${w.venue}, ${w.location}`;
+    document.getElementById('ceremonyTime').textContent = w.ceremonyTime;
+    document.getElementById('receptionTime').textContent = w.receptionTime;
+
+    document.getElementById('closingGroom').textContent = w.groom.toUpperCase();
+    document.getElementById('closingBride').textContent = w.bride.toUpperCase();
+    document.getElementById('closingDate').textContent = w.date.toUpperCase();
+    document.getElementById('closingVenue').textContent = w.venue.toUpperCase();
+    document.getElementById('closingLocation').textContent = w.location.toUpperCase();
+    document.getElementById('signGroom').textContent = w.groom.toUpperCase();
+    document.getElementById('signBride').textContent = w.bride.toUpperCase();
+}
+
+function populateAgents(){
+    const w = CONFIG.WEDDING;
+    document.getElementById('agentGroomName').textContent = w.groom.toUpperCase();
+    document.getElementById('agentBrideName').textContent = w.bride.toUpperCase();
+    document.getElementById('groomRole').textContent = w.groomRole;
+    document.getElementById('brideRole').textContent = w.brideRole;
+    document.getElementById('agentGroomFullName').textContent = w.groomFullName;
+    document.getElementById('agentBrideFullName').textContent = w.brideFullName;
+
+    setupImgFallback('groomImg', CONFIG.ASSETS.AGENT_GROOM);
+    setupImgFallback('brideImg', CONFIG.ASSETS.AGENT_BRIDE);
+
+    // trigger stat bar fill animation once visible
+    const obs = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+            if(e.isIntersecting){
+                e.target.querySelectorAll('.stat-fill').forEach(f=>f.style.animationPlayState='running');
+                obs.unobserve(e.target);
+            }
+        });
+    },{threshold:.3});
+    document.querySelectorAll('.agent-card').forEach(c=>obs.observe(c));
+}
+
+function setupImgFallback(imgId, src){
+    const img = document.getElementById(imgId);
+    img.src = src;
+    img.addEventListener('load', ()=>{
+        img.style.display='block';
+        img.parentElement.querySelector('.agent-portrait-ph').style.display='none';
+    });
+    img.addEventListener('error', ()=>{ img.style.display='none'; });
+}
+
+function populateRundown(){
+    const list = document.getElementById('rundownList');
+    list.innerHTML = '';
+    CONFIG.RUNDOWN.forEach((item, i)=>{
+        const el = document.createElement('div');
+        el.className = 'rundown-item';
+        el.style.animationDelay = `${i*90}ms`;
+        el.innerHTML = `
+            <div class="rundown-time"><span>${item.time}</span><span class="rundown-dot"></span></div>
+            <div class="rundown-text"><div class="t">${item.title}</div><div class="d">${item.desc}</div></div>
+        `;
+        list.appendChild(el);
+    });
+}
+
+function populateStories(){
+    const grid = document.getElementById('storyGrid');
+    grid.innerHTML = '';
+    CONFIG.STORIES.forEach((story, index)=>{
+        const card = document.createElement('div');
+        card.className = 'story-card';
+        card.innerHTML = `
+            <div class="story-num-bg">0${story.id}</div>
+            <div class="story-media">
+                <img src="${story.image}" alt="${story.title}" style="display:none;">
+                <span class="story-media-ph">MISSION ARTWORK<br>PLACEHOLDER</span>
+                <span class="story-status">${story.status}</span>
+                <span class="story-mission-tag">${story.mission}</span>
+            </div>
+            <div class="story-info">
+                <div>
+                    <div class="story-title">${story.title}</div>
+                    <div class="story-sub">${story.subtitle}</div>
+                </div>
+                <div class="story-cta"><span>OPEN MISSION</span><span>→</span></div>
+            </div>
+        `;
+        card.addEventListener('click', ()=>openStoryModal(index+1));
+        const img = card.querySelector('img');
+        const ph = card.querySelector('.story-media-ph');
+        img.addEventListener('load', ()=>{ img.style.display='block'; ph.style.display='none'; });
+        grid.appendChild(card);
+    });
+}
+
+function populateGift(){
+    const g = CONFIG.GIFT;
+    document.getElementById('giftNote').textContent = g.note;
+    document.getElementById('giftBankNumber').textContent = g.bankNumber;
+    document.getElementById('giftBankHolder').textContent = `a.n. ${g.bankHolder}`;
+    document.querySelectorAll('.copy-btn').forEach(btn=>{ btn.dataset.copy = g.bankNumber; });
+}
+
+function populateFAQ(){
+    const wrap = document.getElementById('faqWrap');
+    wrap.innerHTML = '';
+    CONFIG.FAQ.forEach((item, i)=>{
+        const el = document.createElement('div');
+        el.className = 'faq-item';
+        el.innerHTML = `
+            <button class="faq-q"><span><span class="idx">0${i+1}</span>${item.q}</span><span class="chev">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">${item.a}</div></div>
+        `;
+        const btn = el.querySelector('.faq-q');
+        const ans = el.querySelector('.faq-a');
+        btn.addEventListener('click', ()=>{
+            const isOpen = el.classList.contains('open');
+            wrap.querySelectorAll('.faq-item').forEach(f=>{ f.classList.remove('open'); f.querySelector('.faq-a').style.maxHeight = null; });
+            if(!isOpen){ el.classList.add('open'); ans.style.maxHeight = ans.scrollHeight + 'px'; }
+        });
+        wrap.appendChild(el);
+    });
+}
+
+function setupEventListeners(){
+    document.getElementById('readyBtn').addEventListener('click', handleReady);
+    document.getElementById('saveDateBtn').addEventListener('click', saveDate);
+    document.getElementById('openMapBtn').addEventListener('click', ()=>openMap(CONFIG.GOOGLE_MAPS_URL));
+    document.getElementById('ceremonyMapBtn').addEventListener('click', ()=>openMap(CONFIG.GOOGLE_MAPS_URL));
+    document.getElementById('receptionMapBtn').addEventListener('click', ()=>openMap(CONFIG.GOOGLE_MAPS_URL));
+
+    document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
+    document.getElementById('modalOverlay').addEventListener('click', e=>{ if(e.target.id==='modalOverlay') closeModal(); });
+    document.getElementById('prevMissionBtn').addEventListener('click', previousMission);
+    document.getElementById('nextMissionBtn').addEventListener('click', nextMission);
+
+    document.getElementById('rsvpForm').addEventListener('submit', handleRSVP);
+    document.querySelectorAll('input[name="attendance"]').forEach(r=>r.addEventListener('change', handleAttendanceChange));
+
+    document.getElementById('musicPlayer').addEventListener('click', toggleMusic);
+
+    document.addEventListener('click', e=>{
+        if(e.target.classList.contains('copy-btn')) copyToClipboard(e.target);
+    });
+
+    document.addEventListener('keydown', e=>{
+        if(e.key==='Escape') closeModal();
+        if(document.getElementById('modalOverlay').classList.contains('active')){
+            if(e.key==='ArrowLeft') previousMission();
+            if(e.key==='ArrowRight') nextMission();
+        }
+    });
+}
+
+function handleLoadingScreen(){
+    const ls = document.getElementById('loadingScreen');
+    const loadingAudio = document.getElementById('loadingMusic');
+
+    // Start the loading ambience as soon as the page is opened.
+    // The autoplay attribute on the <audio> element handles browsers that allow
+    // audible autoplay; play() is also attempted here for a fast explicit start.
+    loadingAudio.loop = true;
+    loadingAudio.preload = 'auto';
+    loadingAudio.volume = 0.42;
+
+    const startLoadingMusic = () => {
+        if (AppState.loadingMusicPlaying) return;
+        loadingAudio.play().then(()=>{
+            AppState.loadingMusicPlaying = true;
+        }).catch(()=>{
+            // Mobile browsers may block audible autoplay until a user gesture.
+            // READY will still start the main theme because it is a user gesture.
+        });
+    };
+
+    startLoadingMusic();
+
+    setTimeout(()=>{
+        ls.classList.add('hidden');
+        document.getElementById('readyScreen').classList.add('active');
+    }, 1700);
+
+    // Fallback for browsers that block autoplay on initial page load.
+    document.addEventListener('pointerdown', startLoadingMusic, {
+        once:true,
+        passive:true
+    });
+}
+
+function handleReady(){
+    const ready = document.getElementById('readyScreen');
+    const main = document.getElementById('mainScreen');
+    const loadingAudio = document.getElementById('loadingMusic');
+    const mainAudio = document.getElementById('backgroundMusic');
+    const musicBtn = document.getElementById('musicPlayer');
+
+    // Smoothly hand off from loading ambience to the VALORANT theme.
+    const fadeDuration = 260;
+    const startVolume = loadingAudio.volume || 0.42;
+    const startedAt = performance.now();
+
+    const fadeOutLoading = (now) => {
+        const progress = Math.min((now - startedAt) / fadeDuration, 1);
+        loadingAudio.volume = startVolume * (1 - progress);
+        if (progress < 1) {
+            requestAnimationFrame(fadeOutLoading);
+        } else {
+            loadingAudio.pause();
+            loadingAudio.currentTime = 0;
+            loadingAudio.volume = startVolume;
+            AppState.loadingMusicPlaying = false;
+        }
+    };
+    requestAnimationFrame(fadeOutLoading);
+
+    // READY is a user gesture, so this is the reliable point to start
+    // the main music on mobile browsers that blocked the initial autoplay.
+    mainAudio.loop = true;
+    mainAudio.preload = 'auto';
+    mainAudio.currentTime = 0;
+    mainAudio.volume = 0;
+    mainAudio.play().then(()=>{
+        AppState.musicPlaying = true;
+        musicBtn.classList.add('playing');
+
+        // Fade the VALORANT theme in.
+        const mainFadeStart = performance.now();
+        const fadeInMain = (now) => {
+            const progress = Math.min((now - mainFadeStart) / 420, 1);
+            mainAudio.volume = 0.35 * progress;
+            if (progress < 1) requestAnimationFrame(fadeInMain);
+        };
+        requestAnimationFrame(fadeInMain);
+    }).catch(()=>{
+        AppState.musicPlaying = false;
+        musicBtn.classList.remove('playing');
+    });
+
+    ready.style.transition = 'opacity 480ms ease-out, transform 480ms ease-out';
+    ready.style.opacity = '0';
+    ready.style.transform = 'scale(1.03)';
+
+    setTimeout(()=>{
+        ready.style.display='none';
+        main.classList.add('active');
+        musicBtn.classList.add('visible');
+    }, 480);
+}
+
+function openMap(url){ window.open(url, '_blank'); }
+
+function saveDate(){
+    const w = CONFIG.WEDDING;
+    const eventDate = '20261025';
+    const title = `${w.groom} & ${w.bride} Wedding`;
+    const desc = `${w.venue}, ${w.location}`;
+    const ical = `data:text/calendar;charset=utf-8,BEGIN:VCALENDAR%0AVERSION:2.0%0APRODID:-//Wedding//EN%0ABEGIN:VEVENT%0ADTSTART:${eventDate}%0ASUMMARY:${encodeURIComponent(title)}%0ADESCRIPTION:${encodeURIComponent(desc)}%0ALOCATION:${encodeURIComponent(desc)}%0AEND:VEVENT%0AEND:VCALENDAR`;
+    const a = document.createElement('a');
+    a.href = ical; a.download = 'wedding.ics'; a.click();
+}
+
+function openStoryModal(id){
+    AppState.currentMission = id;
+    updateModalContent();
+    document.getElementById('modalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closeModal(){
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+}
+function updateModalContent(){
+    const story = CONFIG.STORIES[AppState.currentMission - 1];
+    document.getElementById('modalMission').textContent = story.mission;
+    document.getElementById('modalTitle').textContent = story.title;
+    document.getElementById('modalSubtitle').textContent = story.subtitle;
+    document.getElementById('modalText').textContent = story.content;
+    document.getElementById('missionCounter').textContent = `${AppState.currentMission} / ${CONFIG.STORIES.length}`;
+
+    const img = document.getElementById('modalImg');
+    const ph = document.getElementById('modalImgPh');
+    img.style.display = 'none'; ph.style.display = 'block';
+    img.src = story.image;
+    img.onload = ()=>{ img.style.display='block'; ph.style.display='none'; };
+
+    document.getElementById('prevMissionBtn').disabled = AppState.currentMission === 1;
+    document.getElementById('nextMissionBtn').disabled = AppState.currentMission === CONFIG.STORIES.length;
+}
+function nextMission(){ if(AppState.currentMission < CONFIG.STORIES.length) openStoryModal(AppState.currentMission+1); }
+function previousMission(){ if(AppState.currentMission > 1) openStoryModal(AppState.currentMission-1); }
+
+function handleAttendanceChange(e){
+    const guests = document.getElementById('guestsInput');
+    if(e.target.value === 'tidak'){ guests.value=''; guests.disabled=true; }
+    else{ guests.disabled=false; }
+}
+function validateForm(){
+    const name = document.getElementById('nameInput').value.trim();
+    const attendance = document.querySelector('input[name="attendance"]:checked')?.value;
+    const guests = document.getElementById('guestsInput').value;
+    let valid = true;
+    showFieldError('name', name.length < 2); if(name.length<2) valid=false;
+    showFieldError('attendance', !attendance); if(!attendance) valid=false;
+    if(attendance==='hadir' && !guests){ showFieldError('guests', true); valid=false; } else showFieldError('guests', false);
+    return valid;
+}
+function showFieldError(field, show){
+    const err = document.getElementById(`${field}Error`);
+    const grp = err.parentElement;
+    err.classList.toggle('show', show);
+    grp.classList.toggle('error', show);
+}
+function handleRSVP(e){
+    e.preventDefault();
+    if(!validateForm()) return;
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true; btn.textContent = 'TRANSMITTING...';
+    const data = {
+        name: document.getElementById('nameInput').value.trim(),
+        attendance: document.querySelector('input[name="attendance"]:checked').value,
+        guests: document.querySelector('input[name="attendance"]:checked').value==='hadir' ? document.getElementById('guestsInput').value : '0',
+        message: document.getElementById('messageInput').value.trim(),
+        timestamp: new Date().toISOString()
+    };
+    fetch(CONFIG.GOOGLE_APPS_SCRIPT_URL, { method:'POST', mode:'no-cors', body: JSON.stringify(data) })
+        .then(()=>finishRSVP(btn)).catch(()=>finishRSVP(btn));
+}
+function finishRSVP(btn){
+    document.getElementById('formSuccess').classList.add('show');
+    setTimeout(()=>{
+        document.getElementById('rsvpForm').reset();
+        document.getElementById('formSuccess').classList.remove('show');
+        btn.disabled=false; btn.textContent='CONFIRM RSVP';
+    }, 3200);
+}
+
+function toggleMusic(){
+    const audio = document.getElementById('backgroundMusic');
+    const btn = document.getElementById('musicPlayer');
+
+    if(AppState.musicPlaying){
+        audio.pause();
+        AppState.musicPlaying = false;
+        btn.classList.remove('playing');
+    } else {
+        audio.volume = 0.35;
+        audio.play().then(()=>{
+            AppState.musicPlaying = true;
+            btn.classList.add('playing');
+        }).catch(()=>{
+            AppState.musicPlaying = false;
+            btn.classList.remove('playing');
+        });
+    }
+}
+
+
+function copyToClipboard(btn){
+    const val = btn.dataset.copy;
+    navigator.clipboard.writeText(val).then(()=>{
+        const orig = btn.textContent;
+        btn.textContent = 'COPIED ✓'; btn.classList.add('copied');
+        setTimeout(()=>{ btn.textContent = orig; btn.classList.remove('copied'); }, 1800);
+    }).catch(()=>{});
+}
+
+function startCountdown(){
+    const target = new Date(CONFIG.WEDDING.isoDate).getTime();
+    function tick(){
+        const now = Date.now();
+        let diff = target - now;
+        if(diff < 0) diff = 0;
+        const days = Math.floor(diff/86400000);
+        const hours = Math.floor((diff%86400000)/3600000);
+        const mins = Math.floor((diff%3600000)/60000);
+        const secs = Math.floor((diff%60000)/1000);
+        document.getElementById('cdDays').textContent = String(days).padStart(2,'0');
+        document.getElementById('cdHours').textContent = String(hours).padStart(2,'0');
+        document.getElementById('cdMins').textContent = String(mins).padStart(2,'0');
+        document.getElementById('cdSecs').textContent = String(secs).padStart(2,'0');
+    }
+    tick();
+    setInterval(tick, 1000);
+}
+
+// scroll-reveal for individual elements
+const revealTargets = [
+    '.section-head', '.story-intro', '.agent-card', '.rundown-item',
+    '.story-card', '.mission-progress', '.gift-card', '.faq-item',
+    '.rsvp-shell', '.closing-inner'
+];
+
+const revealElements = [];
+revealTargets.forEach(selector=>{
+    document.querySelectorAll(selector).forEach((el,index)=>{
+        el.classList.add('scroll-reveal');
+        // Stagger repeated items for a more cinematic entrance.
+        const parent = el.parentElement;
+        if(parent){
+            const siblings = Array.from(parent.children).filter(x=>x.matches(selector));
+            const siblingIndex = siblings.indexOf(el);
+            if(siblingIndex > 0) el.style.transitionDelay = `${Math.min(siblingIndex * 100, 350)}ms`;
+        }
+        revealElements.push(el);
+    });
+});
+
+const revealObs = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add('revealed');
+            revealObs.unobserve(entry.target);
+        }
+    });
+},{ threshold:.12, rootMargin:'0px 0px -6% 0px' });
+
+revealElements.forEach(el=>revealObs.observe(el));
+</script>
+</body>
+</html>
